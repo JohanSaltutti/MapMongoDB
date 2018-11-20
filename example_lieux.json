@@ -1,0 +1,35 @@
+{
+    "location" : {
+        "latitude" : 22,
+        "longitude": 22
+    },
+    "name" : "un nom",
+    "description" : "une description",
+    "type" : 0,
+    "events" : [
+        {
+            "name" : "nom de l'event",
+            "date" : "22-06-2018",
+            "description" : "une description de l'event" 
+        }
+    ],
+    "comments":[
+        {
+            "author" : "Jean bastien",
+            "date" : "22-06-2018",
+            "note" : 12
+        }
+    ],
+    "questions"   : [
+        {
+          "question" : "Le parking est il ouvert après 20h ?",
+          "author"   : "Jacky Test",
+          "answers"  : [
+                {
+                    "answer" : "Non je ne crois pas Jacky !",
+                    "author" : "Michel"
+                }
+            ]
+        }
+    ]
+}
