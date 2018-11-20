@@ -1,0 +1,21 @@
+{
+  "location" : {
+    "latitude"  : 21,
+    "longitude" : 21
+  },
+  "name"        :  "parking n1",
+  "description" : "Un magnifique parking",
+  "type"        : 0,
+  "questions"   : [
+    {
+      "question" : "Le parking est il ouvert après 20h ?",
+      "author"   : "Jacky Test",
+      "answers"  : [
+        {
+          "answer" : "Non je ne crois pas Jacky !",
+          "author" : "Michel"
+        }
+      ]
+    }
+  ]
+}
