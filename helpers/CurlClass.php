@@ -36,7 +36,7 @@ class CurlClass{
         }
         return [
             'code'     => $curl->error ? $curl->errorCode    : 200,
-            'response' => $curl->error ? $curl->errorMessage : $curl->response
+            'response' => $curl->error ? $curl->errorMessage : json_decode($curl->response, true)
         ];
     }
 }
