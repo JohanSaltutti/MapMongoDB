@@ -31,10 +31,28 @@
 
 			data.forEach(function(marker){
 				console.log(marker);
+				var attributes = marker.attributes;
 				var geometry = marker.geometry;
-				new google.maps.Marker({
+				var infoContent  = "<h3>Parking : "+attributes.NOM+"</h3>"+
+									"<p>Adresse : "+attributes.ADRESSE+"</p>"+
+									"<p>Capacité : "+attributes.CAPACITE+"</p>"+
+									"<p>Places libres : "+attributes.PLACES+"</p>"
+				var infoWindow = new google.maps.InfoWindow({
+					content  : infoContent,
+					maxWidth : 200
+				});
+				var icon = '/images/parking.png';
+				var marker = new google.maps.Marker({
 					position: new google.maps.LatLng(geometry.y, geometry.x),
-					map: map
+					title   : marker.attributes.NOM,
+					icon    : icon,
+					map     : map
+				});
+				marker.addListener('mouseover',function(){
+					infoWindow.open(map,this);
+				});
+				marker.addListener('mouseout',function(){
+					infoWindow.close();
 				});
 			});
 		});
