@@ -35,8 +35,12 @@
 				var geometry = parking.geometry;
 				var infoContent  = "<h3>Parking : "+attributes.NOM+"</h3>"+
 									"<p>Adresse : "+attributes.ADRESSE+"</p>"+
-									"<p>Capacité : "+attributes.CAPACITE+"</p>"+
-									"<p>Places libres : "+attributes.PLACES+"</p>"
+									"<p>Capacité : "+attributes.CAPACITE+"</p>"
+
+				if(attributes.PLACES){
+					infoContent += "<p>Places libres : "+attributes.PLACES+"</p>";
+				}
+				
 				var infoWindow = new google.maps.InfoWindow({
 					content  : infoContent,
 					maxWidth : 200
@@ -48,6 +52,7 @@
 					icon    : icon,
 					map     : map
 				});
+				
 				parking.addListener('mouseover',function(){
 					infoWindow.open(map,this);
 				});
