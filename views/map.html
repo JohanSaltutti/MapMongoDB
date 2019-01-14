@@ -60,22 +60,27 @@
 
 		$.get('/ajax/tourisme',function(data,status){
 			data.forEach(function(lieu){
+				
 				var attributes = lieu.attributes;
 				var geometry = lieu.geometry;
-				var infoContent  = "<h3>Lieu touristique : "+attributes.NOM+"</h3>"+
-									"<p>Adresse : "+attributes.ADRESSE+"</p>";
+				var infoContent  = "<h3>Lieu touristique : "+attributes.NAME+"</h3>"+
+									"<p>Adresse : "+attributes.ADRESSE+"</p>" +
+									"<p>Nature : "+attributes.TYPE+"</p>";
 									
 				var infoWindow = new google.maps.InfoWindow({
 					content  : infoContent,
 					maxWidth : 200
 				});
  				var icon = "/images/baseline_gps_fixed_black_18dp.png";
+				 
 				var tourismPlace = new google.maps.Marker({
 					position: new google.maps.LatLng(geometry.y, geometry.x),
-					title   : lieu.attributes.NOM,
+					title   : lieu.attributes.NAME,
 					icon    : icon,
 					map     : map
 				});
+
+
 				tourismPlace.addListener('mouseover',function(){
 					infoWindow.open(map,this);
 				});

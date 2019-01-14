@@ -37,7 +37,7 @@
     });
 
     $app->get('/ajax/tourisme', function (Request $request, Response $response, array $args) {
-        $curl = CurlClass::get('https://geoservices.grand-nancy.org/arcgis/rest/services/public/DOPUB_Tourisme/MapServer/0/query?where=COMMUNE%3D%27Nancy%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=NAME%2CDESCRIPTION%2CCOMMUNE%2CADRESSE%2CTYPE%2CLINK%2CPHOTOS&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&queryByDistance=&returnExtentsOnly=false&datumTransformation=&parameterValues=&rangeValues=&f=pjson');
+        $curl = CurlClass::get('https://geoservices.grand-nancy.org/arcgis/rest/services/public/DOPUB_Tourisme/MapServer/0/query?where=COMMUNE%3D%27Nancy%27&text=&objectIds=&time=&geometry=&geometryType=esriGeometryPolygon&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=NAME%2CDESCRIPTION%2CCOMMUNE%2CADRESSE%2CTYPE%2CLINK%2CPHOTOS&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=4326&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&queryByDistance=&returnExtentsOnly=false&datumTransformation=&parameterValues=&rangeValues=&f=pjson');
         if ($curl['code'] == 200)
             return $response->withJson($curl['response']['features']);
     });
