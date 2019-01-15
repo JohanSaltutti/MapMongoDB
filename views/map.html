@@ -31,15 +31,14 @@
 
 		$.get('/ajax/parking', function(data, status){
 
-			data.forEach(function(parking){
-				var attributes = parking.attributes;
-				var geometry = parking.geometry;
-				var infoContent  = "<h3>Parking : "+attributes.NOM+"</h3>"+
-									"<p>Adresse : "+attributes.ADRESSE+"</p>"+
-									"<p>Capacité : "+attributes.CAPACITE+"</p>"
+			data.forEach(function(element){
+				var positions = element.positions;
+				var infoContent  = `<h3>Parking : ${element.NOM}</h3>
+									<p>Adresse : ${element.ADRESSE}</p>
+									<p>Capacité : ${element.CAPACITE}</p>`
 
-				if(attributes.PLACES){
-					infoContent += "<p>Places libres : "+attributes.PLACES+"</p>";
+				if(element.PLACES){
+					infoContent += "<p>Places libres : "+element.PLACES+"</p>";
 				}
 				
 				var infoWindow = new google.maps.InfoWindow({
@@ -48,8 +47,8 @@
 				});
 				var icon = '/images/parking.png';
 				var parking = new google.maps.Marker({
-					position: new google.maps.LatLng(geometry.y, geometry.x),
-					title   : parking.attributes.NOM,
+					position: new google.maps.LatLng(positions.y, positions.x),
+					title   : element.NOM,
 					icon    : icon,
 					map     : map
 				});
@@ -66,12 +65,11 @@
 
 		$.get('/ajax/tourisme',function(data,status){
 			data.forEach(function(lieu){
-				
-				var attributes = lieu.attributes;
-				var geometry = lieu.geometry;
-				var infoContent  = "<h3>Lieu touristique : "+attributes.NAME+"</h3>"+
-									"<p>Adresse : "+attributes.ADRESSE+"</p>" +
-									"<p>Nature : "+attributes.TYPE+"</p>";
+				var positions = lieu.positions;
+				var infoContent  = `<h3>Lieu touristique : ${lieu.NAME}</h3>
+									<p>Adresse : ${lieu.ADRESSE}</p>
+									<p>Nature : ${lieu.TYPE}</p>
+									<img src="${lieu.LINK}${lieu.PHOTOS}"></img>`
 									
 				var infoWindow = new google.maps.InfoWindow({
 					content  : infoContent,
@@ -80,8 +78,8 @@
  				var icon = "/images/photo.png";
 				 
 				var tourismPlace = new google.maps.Marker({
-					position: new google.maps.LatLng(geometry.y, geometry.x),
-					title   : lieu.attributes.NAME,
+					position: new google.maps.LatLng(positions.y, positions.x),
+					title   : lieu.NAME,
 					icon    : icon,
 					map     : map
 				});
