@@ -66,10 +66,11 @@
 		$.get('/ajax/tourisme',function(data,status){
 			data.forEach(function(lieu){
 				var positions = lieu.positions;
+				var img = lieu.LINK + lieu.PHOTOS;
 				var infoContent  = `<h3>Lieu touristique : ${lieu.NAME}</h3>
 									<p>Adresse : ${lieu.ADRESSE}</p>
 									<p>Nature : ${lieu.TYPE}</p>
-									<img src="${lieu.LINK}${lieu.PHOTOS}"></img>`
+									<img src="${img}"></img>`
 									
 				var infoWindow = new google.maps.InfoWindow({
 					content  : infoContent,
